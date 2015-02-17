@@ -234,12 +234,12 @@ public class Builder
             File clMappedJar = new File( finalMappedJar + "-cl" );
             File mMappedJar = new File( finalMappedJar + "-m" );
 
-            runProcess( CWD, "java", "-jar", "BuildData/bin/SpecialSource.jar", "-i", vanillaJar.getPath(), "-m", "BuildData/mappings/bukkit-1.8-cl.csrg", "-o", clMappedJar.getPath() );
+            runProcess( CWD, "java", "-Xmx2G", "-jar", "BuildData/bin/SpecialSource.jar", "-i", vanillaJar.getPath(), "-m", "BuildData/mappings/bukkit-1.8-cl.csrg", "-o", clMappedJar.getPath() );
 
-            runProcess( CWD, "java", "-jar", "BuildData/bin/SpecialSource-2.jar", "map", "-i", clMappedJar.getPath(),
+            runProcess( CWD, "java", "-Xmx2G", "-jar", "BuildData/bin/SpecialSource-2.jar", "map", "-i", clMappedJar.getPath(),
                     "-m", "BuildData/mappings/bukkit-1.8-members.csrg", "-o", mMappedJar.getPath() );
 
-            runProcess( CWD, "java", "-jar", "BuildData/bin/SpecialSource.jar", "-i", mMappedJar.getPath(), "--access-transformer", "BuildData/mappings/bukkit-1.8.at",
+            runProcess( CWD, "java", "-Xmx2G", "-jar", "BuildData/bin/SpecialSource.jar", "-i", mMappedJar.getPath(), "--access-transformer", "BuildData/mappings/bukkit-1.8.at",
                     "-m", "BuildData/mappings/package.srg", "-o", finalMappedJar.getPath() );
         }
 
